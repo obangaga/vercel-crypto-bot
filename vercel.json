@@ -1,0 +1,27 @@
+{
+  "functions": {
+    "api/cron.js": {
+      "maxDuration": 30
+    },
+    "api/check.js": {
+      "maxDuration": 30
+    },
+    "api/status.js": {
+      "maxDuration": 10
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron",
+      "schedule": "*/5 * * * *"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "buildCommand": "npm install",
+  "outputDirectory": ".next",
+  "framework": null,
+  "installCommand": "npm install",
+  "devCommand": "npm run dev"
+}
