@@ -1,0 +1,132 @@
+{
+  "name": "vercel-crypto-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot untuk monitor token crypto dari cookin.fun dengan Vercel serverless functions",
+  "private": true,
+  "type": "module",
+  "main": "api/cron.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node api/cron.js",
+    "deploy": "vercel --prod",
+    "build": "echo 'No build step required for serverless functions'",
+    "test": "NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "node scripts/check.js",
+    "debug": "node scripts/debug.js",
+    "status": "curl -s https://your-project.vercel.app/api/status | jq .",
+    "manual": "curl -s https://your-project.vercel.app/api/check",
+    "clean": "rm -rf node_modules package-lock.json",
+    "setup": "npm install && cp .env.example .env.local"
+  },
+  "dependencies": {
+    // Core dependencies
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "telegraf": "^4.12.2",
+    
+    // Storage (Redis - optional)
+    "@upstash/redis": "^1.22.0",
+    
+    // Utilities
+    "dotenv": "^16.3.1",
+    "cron-parser": "^4.9.0",
+    "node-cache": "^5.1.2",
+    "uuid": "^9.0.1",
+    
+    // React untuk dashboard (Next.js style)
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    // Vercel CLI
+    "vercel": "^32.5.0",
+    
+    // Testing
+    "jest": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "supertest": "^6.3.3",
+    
+    // Linting & Formatting
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.1.0",
+    
+    // Development tools
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.2",
+    
+    // Types (optional)
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "npm": ">=9.x"
+  },
+  "keywords": [
+    "crypto",
+    "telegram-bot",
+    "vercel",
+    "serverless",
+    "cron",
+    "monitor",
+    "cookin-fun",
+    "blockchain",
+    "solana",
+    "memecoin"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vercel-crypto-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/vercel-crypto-bot/issues"
+  },
+  "homepage": "https://github.com/yourusername/vercel-crypto-bot#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "moduleFileExtensions": ["js", "mjs"],
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "collectCoverageFrom": [
+      "lib/**/*.js",
+      "api/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es2021": true
+    },
+    "extends": ["eslint:recommended", "prettier"],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "off",
+      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    }
+  }
+}
